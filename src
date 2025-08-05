@@ -1,0 +1,58 @@
+import React from "react";
+import { Button } from "./components/ui/button";
+import { ShoppingCart } from "lucide-react";
+import { Card, CardContent } from "./components/ui/card";
+import "./App.css"; // Optional styling
+
+const clothes = [
+  {
+    id: 1,
+    name: "Classic T-Shirt",
+    price: "$25",
+    image: "https://via.placeholder.com/300x400?text=T-Shirt",
+  },
+  {
+    id: 2,
+    name: "Denim Jacket",
+    price: "$60",
+    image: "https://via.placeholder.com/300x400?text=Jacket",
+  },
+  {
+    id: 3,
+    name: "Summer Dress",
+    price: "$45",
+    image: "https://via.placeholder.com/300x400?text=Dress",
+  },
+  {
+    id: 4,
+    name: "Hoodie",
+    price: "$35",
+    image: "https://via.placeholder.com/300x400?text=Hoodie",
+  },
+];
+
+function App() {
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">FashionHub</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {clothes.map((item) => (
+          <Card key={item.id} className="rounded-2xl shadow-md">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="w-full h-64 object-cover rounded-t-2xl"
+            />
+            <CardContent className="p-4">
+              <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
+              <p className="text-gray-600 mb-4">{item.price}</p>
+              <Button className="w-full flex items-center gap-2">
+                <ShoppingCart className="w-4 h-4" /> Add to Cart
+              </Button>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
+  );
+}
